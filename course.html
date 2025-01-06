@@ -1,0 +1,2261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Landing Page</title>
+    <style>
+        body {
+            background-color: rgb(11, 11, 11);
+            margin: 0;
+            font-family: "Zen Dots", sans-serif;
+            color: white;
+            width: 100%;
+            overflow-x: hidden;
+
+        }
+
+        .nav-container {
+            background-color: #f08204;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            color: black;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-brand h3 {
+            margin-left: 10px;
+            font-size: 25px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-link {
+            color: black;
+            font-size: 20px;
+            padding: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .nav-toggle {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        .carousel {
+            display: flex;
+            justify-content: space-between;
+            height: 690px;
+            padding: 2px;
+        }
+
+        .carousel-img, .center {
+            flex: 1;
+            padding: 2px;
+            box-sizing: border-box;
+        }
+
+        .carousel-img img {
+            width: 100%;
+            height: 685px;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            position: relative;
+            bottom: 440px;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.5px;
+            margin: 50px;
+            text-align: center;
+        }
+
+        .center {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .center header {
+            font-size: 4.5em;
+            display: inline-block;
+            padding: 0 10px;
+            background: url(images/title-bg2.png) no-repeat left center;
+            background-size: contain;
+            color: #ffffff;
+            font-weight: bold;
+        }
+
+        .center h1 {
+            font-size: 60px;
+            margin-bottom: 35px;
+        }
+
+        .center span {
+            color: #f08204;
+        }
+
+        .center p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .center form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .center input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .center input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f08204;
+            border: none;
+            color: black;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #text {
+            color: #ff0000;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        /* Media query for mobile screens */
+        @media (max-width: 1024px) {
+            .carousel {
+                /*flex-direction: column;*/
+                height: auto;
+            }
+
+            .carousel-img, .center {
+                width: 100%;
+                padding: 2px 0;
+            }
+
+            .carousel-caption h1 {
+                font-size: 20px;
+            }
+
+            .center header {
+                font-size: 2.5em;
+            }
+
+            .center h1 {
+                font-size: 36px;
+            }
+
+            .center p {
+                font-size: 18px;
+                padding: 0 20px;
+            }
+
+            .center input[type="text"] {
+                width: 90%;
+            }
+
+            .center input[type="submit"] {
+                font-size: 14px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .carousel {
+                flex-direction: column;
+                height: auto;
+            }
+            .carousel-img{
+                padding: 2px 0;
+            }
+            .carousel-img img {
+                height: auto;
+            }
+
+            .center {
+                margin-top: -165px;
+                margin-bottom: 45px;
+            }
+            .nav-menu {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: #f08204;
+                position: absolute;
+                top: 60px;
+                left: 0;
+            }
+
+            .nav-menu.show {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+                color: black;
+            }
+
+            .nav-link {
+                padding: 15px 0;
+                border-bottom: 1px solid #fff;
+            }
+
+            .carousel-caption {
+                bottom: 650px;
+                left: 50%;
+                transform: translateX(-60%);
+                padding: 8px 16px;
+            }
+            .carousel-caption h1 {
+                font-size: 40px;
+            }
+
+            .center header {
+                font-size: 3.5em;
+            }
+
+            .center h1 {
+                font-size: 50px;
+            }
+
+            .center p {
+                font-size: 28px;
+                padding: 0 15px;
+            }
+
+            .center input[type="text"] {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .center input[type="submit"] {
+                font-size: 28px;
+            }
+        }
+
+        /* Extra Small Screens */
+        @media (max-width: 480px) {
+            .carousel-caption{                
+                bottom: 370px;
+                left: 50%;
+                transform: translateX(-73%);
+            }
+            .carousel-caption h1 {
+                font-size: 18px;
+            }
+            .carousel-img{
+                padding: 0 0;
+            }
+
+            .center header {
+                font-size: 3em;
+                padding: 5px 10px;
+            }
+            .nav-menu.show {
+                display: flex;
+                margin-top: 24px;
+                text-align: center;
+            }
+            .center{
+                margin-top: -142px;
+                margin-bottom: 32px;
+            }
+            .center h1 {
+                font-size: 30px;
+            }
+
+            .center p {
+                font-size: 14px;
+            }
+
+            .center input[type="text"] {
+                width: 75%;
+                padding: 10px;
+            }
+
+            .center input[type="submit"] {
+                font-size: 12px;
+                padding: 8px 16px;
+            }
+        }
+        /* Default styles for the BMI calculator */
+        .bmi-calculator {
+            margin-top: 50px;
+            background-color: rgba(0, 0, 0, 1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: aliceblue;
+            margin-top: 0px;
+        }
+        .bmi-calculator h1 {
+            font-size: 4.5em;
+            display: inline-block;
+            padding: 0 10px;
+            background: url(images/title-bg2.png) no-repeat left center;
+            background-size: contain;            
+        }
+        .bmi-calculator h2 {
+            margin-top: -55px;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            font-style: oblique;
+            
+        }
+
+        .bmi {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .bmi-row {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-direction: column; /* Default to column for small screens */
+        }
+
+        .bmi-row  div {
+            margin: 0 10px;
+            flex: 1;
+        }
+        
+        .bmi-calculator label {
+            font-size: 1.2em;
+            margin: 10px 0;
+            display: block;
+        }
+        
+        .bmi-calculator input,
+        .bmi-calculator select {
+            padding: 10px;
+            width: 95%;
+            font-size: 1em;
+            border-radius: 5px;
+            border: none;
+            border: 2px solid #f87810;
+        }
+        
+        .bmi-calculator button {
+            padding: 8px;
+            margin-top: 0px;
+            background-color: #f08204;
+            color: black;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Media query for screens 1025px to 1200px */
+        @media (min-width: 1025px) and (max-width: 1200px) {
+            .bmi-calculator h1 {
+                font-size: 3.8em;
+            }
+            .bmi-calculator h2 {
+                font-size: 2em;
+                margin-top: -30px;
+            }
+            .bmi-row {
+                flex-direction: row; /* Use row layout on wider screens */
+                gap: 15px;
+            }
+            .bmi-calculator input,
+            .bmi-calculator select {
+                width: 90%;
+                padding: 12px;
+            }
+            .bmi-calculator button {
+                font-size: 1.1em;
+                padding: 10px;
+            }
+            .bmi-calculator {
+                margin-top: -32px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .bmi-calculator h1 {
+                font-size: 3.8em;
+            }
+            .bmi-calculator h2 {
+                font-size: 2em;
+                margin-top: -30px;
+            }
+            .bmi-row {
+                flex-direction: row; /* Use row layout on wider screens */
+                gap: 15px;
+            }
+            .bmi-calculator input,
+            .bmi-calculator select {
+                width: 90%;
+                padding: 12px;
+            }
+            .bmi-calculator button {
+                font-size: 1.1em;
+                padding: 10px;
+            }
+        }
+
+        /* Media query for screens 768px and above */
+        @media (min-width: 768px) {
+            .bmi-row {
+                flex-direction: row; /* Change to row for larger screens */
+            }
+        }
+        /*@media (min-width: 768px) {
+            .bmi-calculator{
+                margin-top: -228px;
+            }*/
+        /* Media query for extra small screens */
+        @media (max-width: 767px) {
+            .bmi-row {
+                flex-direction: column; /* Ensure column layout for smaller screens */
+                gap: 20px;
+            }
+            select#gender {
+                width: 100%;
+            }
+            .bmi-calculator h1{
+                font-size: 1.9em;
+                margin-bottom: 66px;
+            
+            }
+            .bmi-calculator h2{
+                font-size: 1.5em;
+
+            }
+           .bmi-calculator{
+            margin-top: -180px;
+            margin-bottom: 160px;
+           }
+        }
+
+
+        /*************about us**************/
+        .about-container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+    
+        .about {
+            display: flex;
+            flex-wrap: wrap;
+            background: rgb(11, 11, 11);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            padding-top: 0px;
+        }
+    
+        .img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        .img img {
+            max-width: 100%;
+            height: auto;
+            margin: 5px;
+            border-radius: 8px;
+            border: 2px solid #f87810;
+        }
+    
+        .about-img1, .about-img2 {
+            width: 350px;
+            height: auto;
+        }
+    
+        .about-us {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+    
+        h1.h1 {
+            font-size: 6em;
+            margin-bottom: 5px;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+            padding: 0 20px;
+            background: url(images/title-bg2.png) no-repeat left center;
+            background-size: contain;
+            color: #ffffff;
+        }
+    
+        h2.title {
+            font-size: 2.8em;
+            margin: 2px;
+            color: #ffffff;
+            font-style: oblique;
+        }
+    
+        p.para {
+            font-size: 1.5em;
+            color: #ffffff;
+            padding: 5px;
+            margin-right: 10px;
+            font-style: italic;
+        }
+    
+        .submit {
+            padding-top: 20px;
+        }
+    
+        .btn {
+            text-decoration: none;
+            background:#f08204;
+            color: #000000;
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+            text-align: center;
+            width: fit-content;
+            font-size: 1.5em;
+        }
+    
+        .btn:hover {
+            background: #ff9933;
+        }
+    
+        /* Media Queries for Responsive Design */
+        @media (max-width: 1024px) {
+            .about {
+                flex-direction: row;
+                align-items: center;
+                margin-top: 24px;
+            }
+    
+            .img, .about-us {
+                max-width: 100%;
+                padding: 10px;
+            }
+    
+            h1.h1 {
+                font-size: 4em;
+            }
+    
+            h2.title {
+                font-size: 1.8em;
+            }
+    
+            p.para {
+                font-size: 1.2em;
+            }
+    
+            .btn {
+                padding: 8px 16px;
+                font-size: 1.2em;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column-reverse;
+                margin-top: -336px;
+            }
+    
+            .about-us {
+                padding: 28px;
+                margin-top: 317px;
+            }
+    
+            h1.h1 {
+                font-size: 4.5em;
+            }
+    
+            h2.title {
+                font-size: 2.5em;
+            }
+    
+            p.para {
+                font-size: 28px;
+            }
+    
+            .btn {
+                padding: 6px 12px;
+                font-size: 1em;
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .about {
+                flex-direction: column-reverse;
+                margin-top: -200px;
+                
+            }
+            .img, .about-us{
+                margin-top: 0px;
+                padding: 15px;
+            }
+            h1.h1 {
+                font-size: 2em;
+                margin-left: 10px;
+            }
+    
+            h2.title {
+                font-size: 1.8em;
+                margin-left: 18px;
+            }
+    
+            p.para {
+                font-size: 1.2em;
+            }
+    
+            .btn {
+                padding: 4px 8px;
+                font-size: 1.2em;
+            }
+        }
+        /*******************our process*************************/ 
+        .process-container {
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #000000;
+            margin-top: 0px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .step {
+            text-align: center;
+            flex: 1;
+            margin: 0 15px;
+        }
+        
+        .step-image {
+            position: relative;
+            overflow: hidden;
+            border-radius: 50%;
+            width: 280px;
+            height: 280px;
+            margin: 0 auto 20px;
+            
+        }
+        
+        .step-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #f87810;
+        }
+        
+        .step-label {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f87810;
+            color: #000000;
+            padding: 5px 10px;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+        
+        .process-container h1 {
+            font-size: 4.5em;
+            color: rgb(255, 255, 255);
+            margin-bottom: 33px;
+            margin-left: 420px;
+            margin-top: -6px;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+            padding: 0 20px;
+            background: url(images/title-bg2.png) no-repeat left center;
+            background-size: contain;
+        }
+        h2.section-title {
+            font-size: 3em;
+            margin-top: -23px;
+            font-style: oblique
+        }
+        .step h3 {
+            font-size: 2.2rem;
+            margin-bottom: 2px;
+            color: #f58a10;
+        }
+        
+        .step p {
+            font-size: 1.4rem;
+            color: #ffffff;
+            font-style: oblique;
+        }
+        
+        /* Responsive Design */
+        
+        @media (max-width: 1024px) {
+            .process-container h1 {
+                font-size: 3.5em;
+                margin-left: 250px;
+                
+            }
+            .process-container{
+                margin: 0 auto;
+            }
+            h2.section-title {
+                font-size: 2em;
+                margin-top: -23px;
+            }
+            .steps {
+                flex-direction: row;
+                align-items: center;
+            }
+        
+            .step {
+                margin-bottom: 40px;
+                max-width: 300px;
+            }
+        
+            .step-image {
+                width: 150px;
+                height: 150px;
+            }
+        
+            .step-label {
+                font-size: 0.9rem;
+            }
+        
+            .step h3 {
+                font-size: 1.5rem;
+            }
+        
+            .step p {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .process-container h1 {
+                font-size: 4em;
+                margin-left: 74px;
+            }
+            h2.section-title {
+                font-size: 2.2em;
+                
+                margin-bottom: 90px;
+            }
+            .steps {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                gap: 50px;
+            }
+        
+            .step {
+                margin-bottom: 30px;
+                max-width: 280px;
+            }
+        
+            .step-image {
+                width: 250px;
+                height: 250px;
+            }
+        
+            .step-label {
+                font-size: 0.8rem;
+            }
+        
+            .step h3 {
+                font-size: 1.2rem;
+            }
+        
+            .step p {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .process-container h1 {
+                font-size: 28px;
+                margin-left: 25px;
+            }
+            h2.section-title {
+                font-size: 22px;
+                
+            }
+            .steps {
+                flex-direction: column;
+            }
+        
+            .step {
+                margin-bottom: 20px;
+                max-width: 100%;
+            }
+        
+            .step-image {
+                width: 180px;
+                height: 180px;
+                margin-top: -25px;
+            }
+        
+            .step-label {
+                font-size: 0.4rem;
+            }
+        
+            .step h3 {
+                font-size: 1.5rem;
+            }
+        
+            .step p {
+                font-size: 20px;
+            }
+        }
+        /**************** our course*************/
+        .course-container {
+            max-width: 1270px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Header styling */
+        .course-header {
+            text-align: center; /* Center the header text */
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        /* H1 header styling */
+        .course-header h1 {
+            font-size: 4.5em; /* Adjusted font size for consistency */
+            margin-bottom: 1px;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+            padding: 0 10px;
+            background: url('images/title-bg2.png') no-repeat left center;
+            background-size: contain;
+            color: #ffffff;
+        }
+
+        /* Paragraph styling in header */
+        .course-header p {
+            font-size: 2.5em; /* Adjusted font size for readability */
+            color: #ffffff;
+            font-style: oblique;
+            margin-top: 0px;
+        }
+
+        /* Course card container */
+        .course {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the course cards */
+            gap: 24px; /* Space between cards */
+        }
+
+        /* Individual course card */
+        .course-card {
+            background-color: #f68e3d;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: calc(24% - 20px); /* 4 columns */
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 30px;
+            border: 2px solid #f87810;
+        }
+
+        /* Image in course card */
+        .course-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* Course title in card */
+        .course-card h2 {
+            font-size: 1.5em;
+            padding: 15px;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #f08204;
+        }
+
+        /* Hover effect for course card */
+        .course-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive adjustments for medium screens */
+        @media (max-width: 1024px) {
+            .course-card {
+                width: calc(50% - 20px); /* 2 columns on tablets */
+            }
+
+            .course-header h1 {
+                font-size: 3.5em; /* Reduce size of headers on smaller screens */
+            }
+
+            .course-header p {
+                font-size: 2em;
+            }
+        }
+
+        /* Responsive adjustments for small screens */
+        @media (max-width: 768px) {
+            .course-card {
+                width: 100%; /* 1 column on small screens */
+            }
+            .course{
+                margin-left: 50px;
+                margin-right: 50px;
+                margin-top: -10px;
+                
+            }
+            .course-card img{
+                height: auto;
+            }
+            .course-card h2 {
+                font-size: 2em;
+                padding: 13px;
+            }
+            .course-header h1 {
+                font-size: 4em;
+            }
+
+            .course-header p {
+                font-size: 2em;
+                margin-top: 10px;
+            }
+        }
+
+        /* Extra small screens (phones) */
+        @media (max-width: 480px) {
+            .course-header h1 {
+                font-size: 2em;
+            }
+
+            .course-header p {
+                font-size: 1.1em;
+                margin-top: 0px;
+            }
+
+            .course-card h2 {
+                font-size: 1.9em;
+                padding: 12px;
+            }
+            .course {
+                margin: 25px;
+            }
+        }
+        /*****************classes***********************/
+        .classes-container {
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            
+            overflow: hidden; /* Disable overall page scroll */
+        }
+
+        .class-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .class-header h1 {
+            font-size: 4.5em;
+            margin-bottom: 1px;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+            padding: 0 10px;
+            background: url(images/title-bg2.png) no-repeat left center;
+            background-size: contain;
+            color: #ffffff;
+        }
+
+        .class-header p {
+            margin: 0;
+            color: #ffffff;
+            font-size: 3em;
+            font-style: oblique;
+            margin-bottom: 50px;
+        }
+
+        .schedule {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-gap: 1px;
+            background-color: #222;
+            overflow-x: auto; /* Horizontal scroll only for the timetable */
+            max-width: 100%; /* Restrict schedule width */
+            white-space: nowrap; /* Ensure cells don't break into multiple lines */
+            height: 486px;
+        }
+
+        .header {
+            display: contents;
+            background-color: #ffffff;
+            color: #fff;
+        }
+
+        .header div {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            background-color: #f87810;
+        }
+
+        .time {
+            background-color: #f87810;
+            font-size: 16px;
+            color: #fffdfd;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .row {
+            display: contents;
+        }
+
+        .class {
+            background-color: #333;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        .class span {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .padding {
+            background-color: #f87810;
+            padding: 20px;
+            grid-column: span 8;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .class-header h1 {
+                font-size: 3em;
+            }
+
+            .class-header p {
+                font-size: 2.3em;
+            }
+
+            .header div, .time {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .class {
+                padding: 15px;
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .class-header h1 {
+                font-size: 4em;
+            }
+
+            .class-header p {
+                font-size: 2.5em;
+            }
+
+            .header div, .time {
+                font-size: 12px;
+                padding: 8px;
+            }
+
+            .class {
+                padding: 12px;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .class-header h1 {
+                font-size: 2rem;
+            }
+            .classes-container{
+                margin-top: -30px;
+            }
+            .schedule{
+                margin: 18px;
+                height: 280px;
+            }
+            .class-header p {
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+
+            .header div, .time {
+                font-size: 10px;
+                padding: 5px;
+            }
+
+            .class {
+                padding: 10px;
+                font-size: 10px;
+            }
+        }
+        /*****************contactus************************/
+        .contact-heading {
+            text-align: center;
+            padding: 20px;
+            margin-top: -55px;
+        }
+
+        .contact-heading h1 {
+            font-size: 4.5em; /* Adjusted for better scaling */
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+            padding: -1 10px;
+            background: url(images/title-bg2.png) no-repeat left center;
+            background-size: contain;
+            color: #ffffff;
+        }
+
+        .contact-heading p {
+            font-size: 3em; /* Adjusted for better scaling */
+            margin-top: 0;
+            font-style: oblique;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1600px; /* Set a max width for better control */
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            margin-top: -65px;
+        }
+
+        .contact-section h2, .info-section h1 {
+            font-size: 2em;
+            margin-left: 0; /* Remove left margin for better alignment */
+            text-align: center;
+        }
+
+        .map-section, .contact-section, .info-section {
+            background-color: #000000;
+            margin: 10px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1 1 300px; /* Flexible width with a minimum of 300px */
+            max-width: 550px; /* Optional: Limit maximum width */
+            box-sizing: border-box;
+        }
+
+        .map-section iframe {
+            width: 100%;
+            height: 470px; /* Set a fixed height for better responsiveness */
+            border: 0;
+            border-radius: 5px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .form-group i {
+            position: absolute;
+            top: 50%;
+            left: 15px;
+            transform: translateY(-50%);
+            color: #f87810;
+            font-size: 1em;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 12px 12px 40px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #ffeee0;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #f87810;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-form button {
+            padding: 12px;
+            background-color: #f87810;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .contact-form button:hover {
+            background-color: #e2670d;
+        }
+
+        .error-text {
+            color: red;
+            font-size: 1em;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .info-item i {
+            background-color: #e2670d;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin-right: 15px;
+            font-size: 1.5em;
+            flex-shrink: 0;
+        }
+
+        .info-text h3 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .info-text p {
+            margin: 5px 0 0 0;
+            color: #888888;
+            font-size: 1em;
+        }
+
+        /* Responsive Media Queries */
+
+        @media (max-width: 1200px) {
+            .map-section, .contact-section, .info-section {
+                max-width: 45%;
+            }
+
+            .contact-section h2, .info-section h1 {
+                font-size: 1.8em;
+            }
+
+            .info-item i {
+                font-size: 1.3em;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .map-section iframe {
+                height: 470px;
+            }
+            .contact-section, .info-section{
+                height: 510px;
+             }
+            .contact-container {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .map-section, .contact-section, .info-section {
+                max-width: 100%;
+            }
+
+            .contact-section h2, .info-section h1 {
+                font-size: 1.6em;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            .contact-form button {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .contact-heading h1{
+                font-size: 4em;
+            }
+            .contact-heading p{
+                font-size: 2em;
+            }
+            .contact-section h2, .info-section h1 {
+                font-size: 1.4em;
+            }
+            .contact-section, .info-section{
+               height: 450px;
+            }
+            .contact-container{
+                display: flex;
+                flex-direction: row;
+            }
+            .map-section iframe {
+                height: 370px;
+            }
+            .form-group input,
+            .form-group textarea {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            .contact-form button {
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            .info-text h3 {
+                font-size: 1.1rem;
+            }
+
+            .info-text p {
+                font-size: 1rem;
+            }
+
+            .form-group i {
+                left: 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-section h2, .info-section h1 {
+                font-size: 1.2em;
+            }
+            .info-section{
+                height: 330px;
+                margin-top: 35px;
+            }
+            .contact-section{
+                width: 100%;
+            }
+            .contact-heading h1 {
+                font-size: 2em;
+            }
+            .contact-heading p {
+                font-size: 1.1em;
+            }
+            .form-group input,
+            .form-group textarea {
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            .contact-form button {
+                font-size: 12px;
+                padding: 10px;
+            }
+
+            .info-text h3 {
+                font-size: 1rem;
+            }
+
+            .info-text p {
+                font-size: 0.8rem;
+            }
+
+            .form-group i {
+                left: 10px;
+                font-size: 0.8em;
+            }
+        }
+        /*******footer***************/
+        .top-bar {
+            background-color: #101010;
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #333;
+            width: 100%;
+            overflow: hidden;
+            
+          }
+          
+          .logo {
+            display: flex;
+            align-items: center;
+          }
+          
+          .logo img {
+            height: 80px;
+            margin-right: 15px;
+          }
+          
+          .logo-text {
+            font-size: 2.5em;
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+            padding: 0 10px;
+            background: url(images/title-bg2.png) no-repeat left center;
+            background-size: contain;
+            color: #ffffff;
+            font-weight: bold;
+            font-style: oblique;
+          }
+          
+          .trainers {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+          }
+          
+          .trainers img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #fff;
+            transition: transform 0.3s ease;
+          }
+          
+          .trainers img:hover {
+            transform: scale(1.2);
+          }
+          
+          .contact {
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            margin: 0 20px;
+          }
+          
+          .contact span {
+            color: #f08204;
+          }
+          
+          .cta-button {
+            background-color: #f08204;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+            text-align: center;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+      
+          }
+          
+          .cta-button:hover {
+            background-color: #bf1a1a;
+          }
+          
+          /* Footer styling */
+          .footer {
+            background-color: #101010;
+            padding: 30px 15px;
+            color: #fff;
+          }
+          
+          .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 1450px;
+            margin: 0 auto;
+          }
+          
+          .footer-about,
+          .footer-links,
+          .footer-contact,
+          .footer-newsletter {
+            flex: 1;
+            margin: 10px;
+            min-width: 220px;
+            text-align: center;
+          }
+          
+          .footer-about h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            color: #ffffff;
+          }
+          
+          .footer-contact h3,
+          .footer-links h3,
+          .footer-newsletter h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+          }
+          
+          .footer p {
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-size: 17px;
+          }
+          
+          .footer a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s, transform 0.3s ease;
+            font-size: 20px;
+          }
+          
+          .footer a:hover {
+            color: #f08204;
+            transform: scale(1.1);
+          }
+          
+          ul {
+            list-style-type: none;
+            padding: 0;
+          }
+          
+          .footer-social {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+          }
+          
+          .footer-social a {
+            color: #fff;
+            font-size: 28px;
+            transition: color 0.3s, transform 0.3s ease;
+            margin-top: 10px;
+            text-transform: capitalize;
+            font-weight: bold;
+          }
+          
+          .footer-social a:hover {
+            color: #f59134;
+            transform: translateY(-5px);
+          }
+          .footer-contact h3{
+            text-align: left;
+          }
+          .footer-contact p{
+            text-align: left;
+          }
+          i.fas, i.fab {
+            background-color: #e2670d;
+            color: white;
+            padding: 8px;
+            border-radius: 5px;
+            margin-right: 6px;
+            flex-shrink: 0;
+            font-size: 20px;
+          }
+          
+          .footer-newsletter form {
+            display: flex;
+            flex-direction: column;
+          }
+          
+          .footer-newsletter input[type="email"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+          }
+          
+          .footer-newsletter button {
+            padding: 10px;
+            border: none;
+            background-color: #f08204;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+          }
+          
+          .footer-newsletter button:hover {
+            background-color: #d28724;
+          }
+          
+          .footer-bottom {
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #333;
+          }
+          
+          .footer-bottom span {
+            color: #f08204;
+          }
+          
+          /* Media Queries*/
+      
+          @media (max-width: 1200px) and (min-width: 1024px) {
+            .top-bar {
+                padding: 15px 0;
+                justify-content: space-around;
+            }
+            
+            .logo img {
+                height: 70px;
+            }
+        
+            .logo-text {
+                font-size: 2.2em;
+            }
+        
+            .trainers img {
+                width: 45px;
+                height: 45px;
+            }
+        
+            .contact {
+                font-size: 16px;
+            }
+            
+          }
+        
+          
+          @media (max-width: 768px) {
+            .top-bar {
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              gap: 33px;
+            }
+            .footer-container{
+              flex-direction: row;
+            }
+            .footer-social{
+              justify-content: center;
+            }
+            .footer-newsletter p{
+              text-align: center;
+            }
+            .footer-contact h3, .footer-links h3,.footer-about h1{
+              text-align: center;
+            }
+            .footer a{
+              text-align: center;
+            }
+            
+            .logo img {
+              height: 60px;
+            }
+            .footer-newsletter form {
+              margin-top: 20px;
+              margin-bottom: 20px;
+              margin-left: 125px;
+              margin-right: 125px;
+            }
+            .footer-newsletter h3 {
+              font-size: 32px;
+              text-align: center;
+            }
+            .contact {
+              font-size: 14px;
+            }
+          
+            .trainers {
+              margin: 10px 0;
+            }
+          
+            .cta-button {
+              margin: 10px 0;
+            }
+          }
+          
+          @media (max-width: 480px) {
+            .top-bar{
+              gap: 13px;
+            }
+            .logo img {
+              height: 50px;
+            }
+          
+            .logo-text {
+              font-size: 2em;
+            }
+          
+            .contact {
+              font-size: 12px;
+              margin: 10px 0;
+            }
+            .footer-contact{
+              text-align: center;
+            }
+            .footer p,
+            .footer a {
+              font-size: 16px;
+              text-align: center;
+            }
+          
+            .footer-newsletter button {
+              padding: 8px;
+              font-size: 18px;
+            }
+            .footer-social{
+              justify-content: center;
+            }
+            .fa-phone-alt{
+              margin-left: -35px;
+            }
+            .fa-envelope{
+              margin-left: -10px;
+            }
+            .footer-newsletter form{
+             width: 100%;
+             margin-left: 0px;
+            }    
+          }
+      
+     </style>
+
+</head>
+<body>
+    <div class="nav-container">
+        <a href="#" class="nav-brand">
+            <i class="fa-solid fa-dumbbell fa-2x"></i>
+            <h3>GYMZONE</h3>
+        </a>
+        <i class="fa fa-bars nav-toggle"></i>
+        <nav role="navigation" class="nav-menu">
+            <a href="#home" class="nav-link">HOME</a>
+            <a href="#about" class="nav-link">ABOUT US</a>
+            <a href="#process" class="nav-link">PROCESS</a>
+            <a href="#course" class="nav-link">COURSES</a>
+            <a href="#class" class="nav-link">CLASSES</a>
+            <a href="#contact" class="nav-link">CONTACT US</a>
+        </nav>
+    </div>
+
+    <div class="page">
+        <div class="container" id="home">
+            <div class="carousel">
+                <div class="carousel-img">
+                    <img src="images/gym-girl-model-exercise.jpg" alt="shape">
+                    <div class="carousel-caption">
+                        <h1>SHAPE YOURSELF</h1>
+                    </div>
+                </div>
+                <div class="center">
+                    <header>GYMZONE</header>
+                    <h1>Transform Your <span>Body</span></h1>
+                    <p>Every bodybuilder requires a lot of dedication and effort to shape his/her body into something to be proud of. We can give you everything you need for it.</p>
+                    <form id="form" action="#" onsubmit="return validation()">
+                        <input type="text" id="email" placeholder="Enter Your Email Address">
+                        <span id="text"></span>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+                <div class="carousel-img">
+                    <img src="images/pexels-pixabay-416809.jpg" alt="yoga">
+                    <div class="carousel-caption">
+                        <h1>SHAPE YOUR FUTURE</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------------------Bmi Index----------------->
+
+    <div class="bmi-calculator">
+        <h1>BODY MASS INDEX</h1>
+        <h2>CALCULATE YOUR BMI NOW</h2>
+        <form id="bmiForm" class="bmi">
+            <div class="bmi-row">
+                <div>
+                    <input type="number" id="weight" placeholder="Weight (kg)" required>
+                </div>
+                <div>
+                    <input type="number" id="height" placeholder="Height (cm)" required>
+                </div>
+                <div>
+                    <select id="gender" required>
+                        <option value="gender">Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div>
+                    <input type="number" id="age" placeholder="Age" required>
+                </div>
+            </div>
+
+            <div class="bmi-row">
+                <div>
+                    <input type="text" id="activity" placeholder="BMI Activity Factor" readonly>
+                </div>
+                <div>
+                    <input type="text" id="means" placeholder="This Means" readonly>
+                </div>
+                <div>
+                    <button type="button" onclick="calculateBMI()">Calculate BMI</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-------------------------About us----------->
+    <div class="about-container" id="about">
+        <div class="about">
+            <!-- Image section on the left -->
+            <div class="img">
+                <img class="about-img1" src="images/img1.jpg" alt="Gym Image 1">
+                <img class="about-img2" src="images/flying.jpg" alt="Gym Image 2">
+            </div>
+
+            <!-- About us section on the right -->
+            <div class="about-us">
+                <h1 class="h1">
+                    ABOUT US
+                </h1>
+                <h2 class="title">THE BEST GYM</h2> 
+                <p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum porttitor egestas orci, vitae ullamcorper risus consectetur id. Donec at velit vestibulum, rutrum massa quis, porttitor lorem. Donec et ultricies arcu. In odio augue, hendrerit nec nisl ac, rhoncus gravida mauris.</p>
+                <p class="para">Quisque consectetur ligula eu urna dignissim, nec mollis ipsum aliquam. Aliquam non est a ipsum facilisis scelerisque eu sed lectus.</p>
+                <div class="submit">
+                    <a href="#contactus" class="btn">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!------------------Process------------------->
+    <section class="work-process" id="process">
+        <div class="process-container">
+            <h1>WORK PROCESS</h1>
+            <h2 class="section-title">EASY STEP TO ACHIEVE YOUR GOALS</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-image">
+                        <img src="images/lifting.jpg" alt="Gym Movement">
+                        <div class="step-label">STEP-01</div>
+                    </div>
+                    <h3>Gym Movement</h3>
+                    <p>Many gyms offer tools and resources to track progress, such as fitness apps, workout logs, or integrated gym software.</p>
+                </div>
+                <div class="step">
+                    <div class="step-image">
+                        <img src="images/sport1.jpg" alt="Fitness Practice">
+                        <div class="step-label">STEP-02</div>
+                    </div>
+                    <h3>Fitness Practice</h3>
+                    <p>Gyms are adaptable to various fitness levels and preferences, catering to beginners and advanced individuals alike.</p>
+                </div>
+                <div class="step">
+                    <div class="step-image">
+                        <img src="images/img3.jpg" alt="Achievement">
+                        <div class="step-label">STEP-03</div>
+                    </div>
+                    <h3>Achievement</h3>
+                    <p>Group fitness classes led by instructors offer structured workouts in a motivating group setting the development.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+     <!------------------course------------------->
+    
+     <div class="course-container" id="course">
+        <div class="course-header">
+            <h1>OUR COURSES</h1>
+            <p>WE AIM TO TRANSFORM YOUR ABILITIES</p>
+        </div>
+        <div class="course">
+            <div class="course-card">
+                <img src="images/dumbbel.jpg" alt="dumbbel Course">
+                <h2>Yoga</h2> 
+            </div>
+            <div class="course-card">
+                <img src="images/beauty.jpg" alt="cycling Course">
+                <h2>Boxing</h2>
+            </div>
+            <div class="course-card">
+                <img src="images/girl.jpg" alt="CrossFit Course">
+                <h2>CrossFit</h2>
+            </div>
+            <div class="course-card">
+                <img src="images/img11.jpg" alt="Pilates Course">
+                <h2>Pilates</h2>
+            </div>
+            <div class="course-card">
+                <img src="images/sport.jpg" alt="dumbbel Course">
+                <h2>Yoga</h2> 
+            </div>
+            <div class="course-card">
+                <img src="images/girl1.jpg" alt="cycling Course">
+                <h2>Boxing</h2>
+            </div>
+            <div class="course-card">
+                <img src="images/img9.jpg" alt="CrossFit Course">
+                <h2>CrossFit</h2>
+            </div>
+            <div class="course-card">
+                <img src="images/img10.jpg" alt="Pilates Course">
+                <h2>Pilates</h2>
+            </div>
+        </div>
+    </div>
+<!------------------classes----------------------------->
+    <div class="classes-container" id="class">
+        <div class="class-header">
+            <h1>OUR CLASSES</h1>
+            <p>OUR GYM FITNESS CLASSES</p>
+        </div>
+        <div class="schedule">
+            <div class="header">
+                <div class="time">Time</div>
+                <div>Monday</div>
+                <div>Tuesday</div>
+                <div>Wednesday</div>
+                <div>Thursday</div>
+                <div>Friday</div>
+                <div>Saturday</div>
+                <div>Sunday</div>        
+            </div>
+
+            <div class="row">
+                <div class="time">06:00 - 07:00</div>
+                <div class="class">Fitness Class<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Boxing Gym<br><span>Robert Cage</span></div>
+                <div class="class">Open Gym<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Fitness Class<br><span>Robert Cage</span></div>
+                <div></div>
+            </div>
+
+            <div class="row">
+                <div class="time">07:00 - 08:00</div>
+                <div class="class">Body Pump<br><span>Robert Cage</span></div>
+                <div class="class">Cardio Box<br><span>Robert Cage</span></div>
+                <div class="class">Yoga Class<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Open Gym<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Crossfit Pro<br><span>Robert Cage</span></div>
+            </div>
+
+            <div class="row">
+                <div class="time">08:00 - 09:00</div>
+                <div></div>
+                <div class="class">Body Pump<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Open Gym<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Crossfit Pro<br><span>Robert Cage</span></div>
+                <div></div>
+            </div>
+
+            <div class="row">
+                <div class="time">09:00 - 10:00</div>
+                <div class="class">Body Pump<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Yoga Class<br><span>Robert Cage</span></div>
+                <div class="class">Cardio Box<br><span>Robert Cage</span></div>
+                <div class="class">Open Gym<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Crossfit Pro<br><span>Robert Cage</span></div>
+            </div>
+
+            <div class="row">
+                <div class="time">10:00 - 11:00</div>
+                <div class="class">Body Pump<br><span>Robert Cage</span></div>
+                <div class="class">Cardio Box<br><span>Robert Cage</span></div>
+                <div class="class">Yoga Class<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Open Gym<br><span>Robert Cage</span></div>
+                <div></div>
+                <div class="class">Crossfit Pro<br><span>Robert Cage</span></div>
+            </div>
+
+            <div class="padding"></div>
+        </div>
+    </div>
+    <!---------------------------contact us--------------------> 
+    <div class="contact-heading" id="contact">
+        <h1>CONTACT US</h1>
+        <p>ASK US ANYTHING!</p>
+    </div>
+    <div class="contact-container">
+        <!-- Info Section -->
+        <div class="info-section">
+            <h1>Contact Info</h1>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <div class="info-text">
+                    <h3>Opening hours</h3>
+                    <p>Monday - Friday 10 AM - 11 PM</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="info-text">
+                    <h3>Address Location</h3>
+                    <p>12 Street Rd Suite, United States of America</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div class="info-text">
+                    <h3>Email Address</h3>
+                    <p>helpInfo@fitkitexample.com</p>
+                </div>
+            </div>
+
+            <div class="info-item">
+                <i class="fas fa-phone"></i>
+                <div class="info-text">
+                    <h3>Phone Number</h3>
+                    <p>+163-6359-9852</p>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h2>Contact Us</h2>
+            <form id="contact-form" class="contact-form" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="email" name="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="text" id="number" name="phone" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <i class="fa-solid fa-comment"></i>
+                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                </div>
+
+                <button type="submit">Send</button>
+                <p id="error-text" class="error-text"></p>
+            </form>
+        </div>
+        <!-- Map Section -->
+        <div class="map-section">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.086995920586!2d144.96305761531577!3d-37.81627977975125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f9eebd23%3A0x5045675218ce6e0!2z44CSMzAwMCBBdXN0cmFsaWE!5e0!3m2!1sen!2s!4v1614579492622!5m2!1sen!2s"
+                allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>  
+    <!----------------Footer---------------------------->
+    <!-- Top Bar Section -->
+    <div class="top-bar">
+        <div class="logo">
+            <img src="images/icon1.png" alt="Gym On Logo">
+            <span class="logo-text">GYM ZONE</span>
+        </div>
+        <div class="trainers">
+            <img src="images/trainer1.jpg" alt="Trainer 1">
+            <img src="images/trainer2.jpg" alt="Trainer 2">
+            <img src="images/trainer.jpg" alt="Trainer 3">
+        </div>
+        <div class="contact">
+            Expert Trainers: <span>+1 (251) 344 0 66</span> Free Call!
+        </div>
+        <a href="#" class="cta-button">Get A Consultation</a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h1>INFORMATION</h1>
+                <p>Credibly Synthesize Visionary Systems Before Functionalized Channels. Dynamically Enable Intermediated Relationships Through.</p>
+                <div class="follow-us">
+                  <h2>Follow Us On:</h2>
+                </div>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-google"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#course">Courses</a></li>
+                    <li><a href="#class">Classes</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Now</h3>
+                <p><i class="fas fa-map-marker-alt"></i> 835 Middle Country Rd,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NY 11784, USA</p>
+                <p><i class="fas fa-phone-alt"></i> +(163)-1202-0088<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;+(163)-1202-0099</p>
+                <p><i class="fas fa-envelope"></i> help24/7@gmail.com</p>
+            </div>
+            <div class="footer-newsletter">
+                <h3>Newsletter</h3>
+                <p>Sign Up To Get Updates & <br>News About Us.</p>
+                <form action="#">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe Now</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright © 2024 By <span>GYMZONE</span>. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript">
+        function validation() {
+            var email = document.getElementById("email").value;
+            var text = document.getElementById("text");
+            var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (email === "") {
+                text.innerHTML = "Email field cannot be empty";
+                text.style.color = "#ff0000";
+                return false;
+            }
+
+            if (email.match(pattern)) {
+                text.innerHTML = "Your Email is Valid";
+                text.style.color = "#00ff00";
+                return true;
+            } else {
+                text.innerHTML = "Please enter a valid Email Address";
+                text.style.color = "#ff0000";
+                return false;
+            }
+        }
+
+        document.querySelector('.nav-toggle').addEventListener('click', function () {
+            document.querySelector('.nav-menu').classList.toggle('show');
+        });
+        //BMI calculator
+        function calculateBMI() {
+            const weight = document.getElementById('weight').value;
+            const height = document.getElementById('height').value;
+        
+            if (weight && height) {
+                const bmi = (weight / ((height / 100) ** 2)).toFixed(2);
+                let message = '';
+        
+                if (bmi < 18.5) {
+                    message = 'Underweight';
+                } else if (bmi < 24.9) {
+                    message = 'Normal weight';
+                } else if (bmi < 29.9) {
+                    message = 'Overweight';
+                } else {
+                    message = 'Obese';
+                }
+        
+                document.getElementById('activity').value = `Your BMI is ${bmi}`; // Set as value for input
+                document.getElementById('means').value = `This means ${message}`; // Set as value for input
+            } else {
+                document.getElementById('activity').value = 'Please enter valid values'; // Set as value for input
+            }
+        }
+
+        //contact us
+        function validateForm() {
+            var name = document.getElementById("name").value.trim();
+            var email = document.getElementById("email").value.trim();
+            var phone = document.getElementById("number").value.trim();
+            var message = document.getElementById("message").value.trim();
+            var errorText = document.getElementById("error-text");
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var phonePattern = /^[0-9]{10,15}$/;
+
+            if (name === "") {
+                errorText.innerHTML = "Name must be filled out";
+                return false;
+            }
+
+            if (!emailPattern.test(email)) {
+                errorText.innerHTML = "Please enter a valid Email Address";
+                return false;
+            }
+
+            if (!phonePattern.test(phone)) {
+                errorText.innerHTML = "Please enter a valid Phone Number (10-15 digits)";
+                return false;
+            }
+
+            if (message === "") {
+                errorText.innerHTML = "Message cannot be empty";
+                return false;
+            }
+
+            // Optionally, clear error message on successful validation
+            errorText.innerHTML = "";
+            return true;
+        }
+    </script>
+</body>
+</html>
